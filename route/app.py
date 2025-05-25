@@ -39,8 +39,7 @@ async def health_check():
         'message': 'API đang hoạt động bình thường'
     }
 
-if __name__ == '__main__':
-    # Khởi tạo vector store trước khi chạy server
-    main.get_vectorstore()
-    # Chạy Uvicorn server
-    uvicorn.run(app, host='0.0.0.0', port=5000)
+# Remove the following block for Vercel compatibility
+# if __name__ == '__main__':
+#     main.get_vectorstore()
+#     uvicorn.run(app, host='0.0.0.0', port=5000)
