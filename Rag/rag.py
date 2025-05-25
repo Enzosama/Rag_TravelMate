@@ -1,16 +1,16 @@
-import os
 from dotenv import load_dotenv
+load_dotenv()
+import os
 import sqlite3
 import pandas as pd
 import google.generativeai as genai
 import sys
-import os
 import csv
 from Rag.calculate import convert_currency
 from Rag.vector_store import embeddings, create_vector_store, initialize_vectorstore, get_vectorstore, load_vectorstore, KEYWORD_MAPPINGS, analyze_query, check_and_convert_currency
 from Rag import prompt
 
-load_dotenv()
+genai.configure(api_key=os.environ.get("GOOGLE_API_KEY"))
 
 # Thêm thư mục cha vào sys.path để có thể import các module
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

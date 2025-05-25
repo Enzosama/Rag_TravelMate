@@ -1,18 +1,16 @@
+from dotenv import load_dotenv
+load_dotenv()
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
-from dotenv import load_dotenv
 from Rag.calculate import convert_currency
-load_dotenv()
 
-# Đảm bảo GOOGLE_API_KEY được lấy từ biến môi trường
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 if not GOOGLE_API_KEY or GOOGLE_API_KEY == "YOUR_API_KEY_HERE":
     raise ValueError("GOOGLE_API_KEY chưa được thiết lập đúng. Vui lòng đặt biến môi trường GOOGLE_API_KEY với API key hợp lệ.")
 
-# Khởi tạo embeddings
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=GOOGLE_API_KEY)
 
 # Biến toàn cục để lưu vector store
